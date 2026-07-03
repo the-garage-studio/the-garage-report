@@ -4,17 +4,30 @@
 
 **Status:** In development
 
-**Last updated:** 30 June 2026
+**Last updated:** 2 July 2026
 
 ---
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Vision](#vision)
-- [Project Scope](#project-scope)
+1. [Project Overview](#project-overview)
+   - [1.1. Introduction](#introduction)
+   - [1.2. Vision](#vision)
+   - [1.3. Project Scope](#project-scope)
+     - [1.3.1. Frontend Scope](#1-frontend-scope)
+     - [1.3.2. Backend Scope](#2-backend-scope)
+     - [1.3.3. Deployment & Infrastructure Scope](#3-deployment--infrastructure-scope)
+     - [1.3.4. Product / Application Scope](#4-product--application-scope)
+
+2. [Requirements Specification](#requirements-specification)
+   - [2.1. Epics](#epics)
+   - [2.2. Features](#features)
+   - [2.3. User Stories](#user-stories)
+   - [2.4. Technical Stories](#technical-stories)
+
 
 ---
+## **Project Overview**
 
 ## **Introduction**
 This project was born from an idea I had in mind for a long time. I grew up playing FIFA, and one of the game's standout features that always caught my attention was the transfer market its a dynamic built around buying, selling, and collecting unique players. From that idea came this project: a market for car cards, where each card represents a unique, one-of-a-kind car model, similar to a collectible card. Users can decide what to do with their card, whether to sell it or collect it, and most importantly, **CARDS ARE UNIQUE**.
@@ -179,3 +192,62 @@ Additionally, the development of this project has the personal and professional 
 - Cross-server or cross-region marketplace.
 - Advanced user profile customization.
 - User-created cards.
+
+## **Requirements Specification**
+
+## **Epics**
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Epic</th>
+      <th>Description</th>
+      <th>Derived From</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>EPIC-01</td>
+      <td>User Management & Authentication</td>
+      <td>User registration, authentication, profile management, and platform security.</td>
+      <td>User Management, Backend Security</td>
+    </tr>
+    <tr>
+      <td>EPIC-02</td>
+      <td>Card Catalog Administration</td>
+      <td>Administration of the card catalog, including creation, rarity assignment, and circulation management.</td>
+      <td>Card Management, Card Uniqueness</td>
+    </tr>
+    <tr>
+      <td>EPIC-03</td>
+      <td>Card Pack Opening</td>
+      <td>Free periodic packs and the random card generation process.</td>
+      <td>Card Management</td>
+    </tr>
+    <tr>
+      <td>EPIC-04</td>
+      <td>Marketplace & Trading</td>
+      <td>Buying, selling, searching, filtering, and transaction history.</td>
+      <td>Marketplace / Trading</td>
+    </tr>
+    <tr>
+      <td>EPIC-05</td>
+      <td>Personal Card Collection</td>
+      <td>User inventory, collection management, and filtering.</td>
+      <td>Personal Collection</td>
+    </tr>
+    <tr>
+      <td>EPIC-06</td>
+      <td>Subscription Plans</td>
+      <td>Subscription plans that increase the user's collection storage limit.</td>
+      <td>Personal Collection</td>
+    </tr>
+    <tr>
+      <td>EPIC-07</td>
+      <td>Roles & Permissions</td>
+      <td>Role-based authorization and permission management.</td>
+      <td>Roles</td>
+    </tr>
+  </tbody>
+</table>
