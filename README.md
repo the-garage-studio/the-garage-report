@@ -204,6 +204,7 @@ Additionally, the development of this project has the personal and professional 
       <th>Epic</th>
       <th>Description</th>
       <th>Derived From</th>
+      <th>Acceptance Criteria</th>
     </tr>
   </thead>
   <tbody>
@@ -212,42 +213,107 @@ Additionally, the development of this project has the personal and professional 
       <td>User Management & Authentication</td>
       <td>User registration, authentication, profile management, and platform security.</td>
       <td>User Management, Backend Security</td>
+      <td>
+        Given that a new user provides valid registration information,<br>
+        When the registration request is submitted,<br>
+        Then the system creates a new user account successfully.<br><br>
+        Given that a registered user provides valid credentials,<br>
+        When the user logs in,<br>
+        Then the system authenticates the user and issues a valid JWT.<br><br>
+        Given that an authenticated user accesses their profile,<br>
+        When the request is authorized,<br>
+        Then the system returns the user's profile information.
+      </td>
     </tr>
     <tr>
       <td>EPIC-02</td>
       <td>Card Catalog Administration</td>
       <td>Administration of the card catalog, including creation, rarity assignment, and circulation management.</td>
       <td>Card Management, Card Uniqueness</td>
+      <td>
+        Given that an administrator creates a new card,<br>
+        When all required information is provided,<br>
+        Then the card is stored in the catalog.<br><br>
+        Given that a card exists,<br>
+        When the administrator updates its status,<br>
+        Then the card becomes active or inactive accordingly.<br><br>
+        Given that a card has an assigned rarity,<br>
+        When it is saved,<br>
+        Then its rarity cannot be modified afterwards.
+      </td>
     </tr>
     <tr>
       <td>EPIC-03</td>
       <td>Card Pack Opening</td>
       <td>Free periodic packs and the random card generation process.</td>
       <td>Card Management</td>
+      <td>
+        Given that the cooldown period has expired,<br>
+        When the user opens a free pack,<br>
+        Then the system awards one random card.<br><br>
+        Given that the user has already claimed the current pack,<br>
+        When another attempt is made,<br>
+        Then the system prevents opening a new pack until the cooldown expires.
+      </td>
     </tr>
     <tr>
       <td>EPIC-04</td>
       <td>Marketplace & Trading</td>
       <td>Buying, selling, searching, filtering, and transaction history.</td>
       <td>Marketplace / Trading</td>
+      <td>
+        Given that a user owns a card,<br>
+        When the user publishes it for sale,<br>
+        Then the card becomes visible in the marketplace.<br><br>
+        Given that another user purchases the card,<br>
+        When the transaction is completed,<br>
+        Then ownership is transferred and the transaction is recorded.<br><br>
+        Given that cards exist in the marketplace,<br>
+        When a user searches or filters them,<br>
+        Then only matching results are displayed.
+      </td>
     </tr>
     <tr>
       <td>EPIC-05</td>
       <td>Personal Card Collection</td>
       <td>User inventory, collection management, and filtering.</td>
       <td>Personal Collection</td>
+      <td>
+        Given that a user owns cards,<br>
+        When the collection is opened,<br>
+        Then all owned cards are displayed.<br><br>
+        Given that filters are applied,<br>
+        When the collection is refreshed,<br>
+        Then only cards matching the selected criteria are shown.
+      </td>
     </tr>
     <tr>
       <td>EPIC-06</td>
       <td>Subscription Plans</td>
       <td>Subscription plans that increase the user's collection storage limit.</td>
       <td>Personal Collection</td>
+      <td>
+        Given that a user reaches the storage limit,<br>
+        When a subscription plan is activated,<br>
+        Then the collection capacity is increased.<br><br>
+        Given that no active subscription exists,<br>
+        When the storage limit is reached,<br>
+        Then the system prevents storing additional cards.
+      </td>
     </tr>
     <tr>
       <td>EPIC-07</td>
       <td>Roles & Permissions</td>
       <td>Role-based authorization and permission management.</td>
       <td>Roles</td>
+      <td>
+        Given that a user has an assigned role,<br>
+        When accessing a protected resource,<br>
+        Then the system grants or denies access based on permissions.<br><br>
+        Given that an administrator accesses administration features,<br>
+        When the request is authorized,<br>
+        Then the system allows administrative operations.
+      </td>
     </tr>
   </tbody>
 </table>
