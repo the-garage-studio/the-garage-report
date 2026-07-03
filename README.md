@@ -21,9 +21,8 @@
 
 2. [Requirements Specification](#requirements-specification)
    - [2.1. Epics](#epics)
-   - [2.2. Features](#features)
-   - [2.3. User Stories](#user-stories)
-   - [2.4. Technical Stories](#technical-stories)
+   - [2.2. User Stories](#user-stories)
+   - [2.3. Technical Stories](#technical-stories)
 
 
 ---
@@ -314,6 +313,176 @@ Additionally, the development of this project has the personal and professional 
         When the request is authorized,<br>
         Then the system allows administrative operations.
       </td>
+    </tr>
+  </tbody>
+</table>
+
+## **User Stories**
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>User Story</th>
+      <th>Acceptance Criteria</th>
+      <th>Epic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>US01</td>
+      <td>User Registration</td>
+      <td>Allows new users to create an account using a unique email address and password.</td>
+      <td>As a new user, I want to register an account with my email and password, so that I can access the platform and start using it.</td>
+      <td>
+        Given a visitor is on the registration page,<br>
+        When they submit a valid unique email, password, and required fields,<br>
+        Then the system creates the account and confirms success.<br><br>
+        Given a visitor submits an email already in use,<br>
+        When they attempt to register,<br>
+        Then the system rejects the request with a clear error message.<br><br>
+        Given a visitor submits a password that doesn't meet security requirements,<br>
+        When they attempt to register,<br>
+        Then the system rejects the request and indicates the missing requirements.
+      </td>
+      <td>EP01</td>
+    </tr>
+    <tr>
+      <td>US02</td>
+      <td>User Login</td>
+      <td>Enables registered users to authenticate and securely access the application.</td>
+      <td>As a registered user, I want to log in with my credentials, so that I can securely access my account and its features.</td>
+      <td>
+        Given a registered user enters valid credentials,<br>
+        When they submit the login form,<br>
+        Then the system authenticates them and issues a JWT token.<br><br>
+        Given a user enters invalid credentials,<br>
+        When they submit the login form,<br>
+        Then the system displays a generic error without specifying which field is incorrect.
+      </td>
+      <td>EP01</td>
+    </tr>
+    <tr>
+      <td>US03</td>
+      <td>View and Edit Profile</td>
+      <td>Allows users to view and update their personal profile information.</td>
+      <td>As a registered user, I want to view and edit my profile information, so that I can keep my account details up to date.</td>
+      <td>
+        Given a logged-in user navigates to their profile,<br>
+        When the page loads,<br>
+        Then the system displays their current profile data.<br><br>
+        Given a logged-in user updates an editable field,<br>
+        When they save the changes,<br>
+        Then the system persists the update and confirms success.
+      </td>
+      <td>EP01</td>
+    </tr>
+    <tr>
+      <td>US04</td>
+      <td>Create a New Card</td>
+      <td>Enables administrators to create new collectible car cards with their corresponding attributes and rarity.</td>
+      <td>As an administrator, I want to create new car cards with their attributes (model, brand, rarity), so that they become available for users to obtain.</td>
+      <td>
+        Given an administrator fills in brand, model, and rarity,<br>
+        When they submit the form,<br>
+        Then the system creates the card with "active" status.<br><br>
+        Given a card has been created with an assigned rarity,<br>
+        When any user attempts to modify that rarity afterward,<br>
+        Then the system rejects the change.
+      </td>
+      <td>EP02</td>
+    </tr>
+    <tr>
+      <td>US05</td>
+      <td>Deactivate a Card</td>
+      <td>Allows administrators to deactivate cards without deleting their historical records.</td>
+      <td>As an administrator, I want to deactivate cards that are never purchased, so that they no longer circulate without deleting their historical data.</td>
+      <td>
+        Given an administrator selects an active, unpurchased card,<br>
+        When they change its status to "inactive,"<br>
+        Then the card no longer appears in the marketplace or in pack openings.<br><br>
+        Given a card is deactivated,<br>
+        When the action is completed,<br>
+        Then the card record remains stored in the database (soft delete).
+      </td>
+      <td>EP02</td>
+    </tr>
+    <tr>
+      <td>US06</td>
+      <td>Open a Free Card Pack</td>
+      <td>Enables users to periodically receive a random card by opening a free pack.</td>
+      <td>As a regular user, I want to open a free card pack at defined intervals, so that I can obtain new cards for my collection.</td>
+      <td>
+        Given the defined time interval has passed since the user's last pack opening,<br>
+        When the user opens a pack,<br>
+        Then the system assigns one random active card to their collection.<br><br>
+        Given the time interval has not yet passed,<br>
+        When the user attempts to open a pack,<br>
+        Then the system blocks the action and indicates the remaining wait time.
+      </td>
+      <td>EP03</td>
+    </tr>
+    <tr>
+      <td>US07</td>
+      <td>List a Card for Sale</td>
+      <td>Allows card owners to publish their cards for sale in the marketplace.</td>
+      <td>As a card owner, I want to list one of my cards for sale in the marketplace, so that other users can purchase it.</td>
+      <td>
+        Given a user owns a card,<br>
+        When they set a sale price and list it,<br>
+        Then the card's status changes to "for sale" and becomes visible in the marketplace.<br><br>
+        Given a user does not own a card,<br>
+        When they attempt to list it,<br>
+        Then the system rejects the action.
+      </td>
+      <td>EP04</td>
+    </tr>
+    <tr>
+      <td>US08</td>
+      <td>Purchase a Card</td>
+      <td>Enables users to purchase cards listed by other users and transfer ownership.</td>
+      <td>As a user, I want to purchase a card that is listed in the marketplace, so that I can become its new owner.</td>
+      <td>
+        Given a card is listed for sale and the user is not its current owner,<br>
+        When the user completes the purchase,<br>
+        Then ownership transfers to the buyer and the card is removed from the marketplace.<br><br>
+        Given a purchase is completed,<br>
+        When the transaction finishes,<br>
+        Then the system records it in the transaction history.
+      </td>
+      <td>EP04</td>
+    </tr>
+    <tr>
+      <td>US09</td>
+      <td>Search and Filter the Marketplace</td>
+      <td>Allows users to search and filter marketplace listings based on different criteria.</td>
+      <td>As a user, I want to search and filter cards available in the marketplace, so that I can quickly find cards that interest me.</td>
+      <td>
+        Given a user enters a search term (name, brand, or model),<br>
+        When they submit the search,<br>
+        Then the system displays matching results.<br><br>
+        Given a user applies rarity or price range filters,<br>
+        When the filters are applied,<br>
+        Then the results update to reflect only matching cards.
+      </td>
+      <td>EP04</td>
+    </tr>
+    <tr>
+      <td>US10</td>
+      <td>View Personal Collection</td>
+      <td>Enables users to browse and organize the cards they currently own</td>
+      <td>As a user, I want to view all the cards in my personal collection, so that I can keep track of what I currently own.</td>
+      <td>
+        Given a logged-in user navigates to their collection,<br>
+        When the page loads,<br>
+        Then the system displays all cards they currently own with their main attributes.<br><br>
+        Given a user applies a filter (brand, purchase price, or current value),<br>
+        When the filter is applied,<br>
+        Then the collection view updates accordingly.
+      </td>
+      <td>EP05</td>
     </tr>
   </tbody>
 </table>
