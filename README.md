@@ -317,6 +317,8 @@ Additionally, the development of this project has the personal and professional 
   </tbody>
 </table>
 
+<br><br><br>
+
 ## **User Stories**
 
 <table>
@@ -483,6 +485,136 @@ Additionally, the development of this project has the personal and professional 
         Then the collection view updates accordingly.
       </td>
       <td>EP05</td>
+    </tr>
+    <tr>
+      <td>US11</td>
+      <td>View Transaction History</td>
+      <td>Allows users to review a record of their past purchases and sales in the marketplace.</td>
+      <td>As a user, I want to view my transaction history, so that I can keep track of the cards I have bought and sold.</td>
+      <td>
+        <ul>
+          <li>Given a logged-in user navigates to their transaction history, when the page loads, then the system displays all past purchases and sales with date, price, and card details.</li>
+          <li>Given a user has no completed transactions, when they open the transaction history, then the system displays an empty state message.</li>
+        </ul>
+      </td>
+      <td>EP04</td>
+    </tr>
+    <tr>
+      <td>US12</td>
+      <td>Cancel a Card Listing</td>
+      <td>Enables owners to remove their card from the marketplace before it is purchased.</td>
+      <td>As a card owner, I want to cancel an active listing, so that I can keep the card in my collection instead of selling it.</td>
+      <td>
+        <ul>
+          <li>Given a user has a card listed for sale that has not been purchased, when they cancel the listing, then the card's status returns to <strong>owned</strong> and it is removed from the marketplace.</li>
+          <li>Given a card has already been purchased by another user, when the original owner attempts to cancel the listing, then the system rejects the action.</li>
+        </ul>
+      </td>
+      <td>EP04</td>
+    </tr>
+    <tr>
+      <td>US13</td>
+      <td>View Remaining Pack Cooldown</td>
+      <td>Shows users how much time remains before they can open their next free pack.</td>
+      <td>As a regular user, I want to see the remaining cooldown time before my next free pack, so that I know when I can open it again.</td>
+      <td>
+        <ul>
+          <li>Given a user has already opened a pack within the current cooldown period, when they visit the pack-opening screen, then the system displays the exact time remaining until the next pack is available.</li>
+          <li>Given the cooldown period has expired, when the user visits the pack-opening screen, then the system indicates that a new pack is ready to be opened.</li>
+        </ul>
+      </td>
+      <td>EP03</td>
+    </tr>
+    <tr>
+      <td>US14</td>
+      <td>Subscribe to a Plan</td>
+      <td>Allows users to purchase a subscription plan to increase their collection storage limit.</td>
+      <td>As a user, I want to subscribe to a plan, so that I can store more cards in my personal collection.</td>
+      <td>
+        <ul>
+          <li>Given a user selects an available subscription plan, when they confirm the subscription, then the system activates the plan and increases the user's storage limit accordingly.</li>
+          <li>Given a user already has an active subscription, when they attempt to subscribe again, then the system prevents duplicate active subscriptions.</li>
+        </ul>
+      </td>
+      <td>EP06</td>
+    </tr>
+    <tr>
+      <td>US15</td>
+      <td>View Active Subscription Details</td>
+      <td>Enables users to check the status and benefits of their current subscription plan.</td>
+      <td>As a subscribed user, I want to view my current plan's details, so that I know my storage limit and renewal information.</td>
+      <td>
+        <ul>
+          <li>Given a user has an active subscription, when they open their subscription details, then the system displays the plan name, storage limit, and status.</li>
+          <li>Given a user has no active subscription, when they open the subscription section, then the system displays the default storage limit and available plans to upgrade.</li>
+        </ul>
+      </td>
+      <td>EP06</td>
+    </tr>
+    <tr>
+      <td>US16</td>
+      <td>Cancel a Subscription Plan</td>
+      <td>Allows users to cancel their current subscription plan.</td>
+      <td>As a subscribed user, I want to cancel my subscription plan, so that I stop being charged and my storage limit returns to default at the end of the billing period.</td>
+      <td>
+        <ul>
+          <li>Given a user has an active subscription, when they request cancellation, then the system marks the subscription as <strong>cancelled</strong> and schedules the storage limit to revert once the current period ends.</li>
+          <li>Given a user has no active subscription, when they attempt to cancel, then the system rejects the action.</li>
+        </ul>
+      </td>
+      <td>EP06</td>
+    </tr>
+    <tr>
+      <td>US17</td>
+      <td>Assign Role to a User</td>
+      <td>Enables administrators to assign a specific role (Administrator, Developer, Regular User) to a given user.</td>
+      <td>As an administrator, I want to assign roles to users, so that I can control what actions they are authorized to perform.</td>
+      <td>
+        <ul>
+          <li>Given an administrator selects a user and a valid role, when they confirm the assignment, then the system updates the user's role accordingly.</li>
+          <li>Given a non-administrator attempts to assign a role, when the request is submitted, then the system rejects the action due to insufficient permissions.</li>
+        </ul>
+      </td>
+      <td>EP07</td>
+    </tr>
+    <tr>
+      <td>US18</td>
+      <td>Restrict Access to Protected Resources</td>
+      <td>Ensures that only users with the appropriate role can access certain features or endpoints.</td>
+      <td>As a system, I want to restrict access to protected resources based on user roles, so that only authorized users can perform sensitive actions.</td>
+      <td>
+        <ul>
+          <li>Given a user without the required role attempts to access a protected resource, when the request is made, then the system denies access and returns an authorization error.</li>
+          <li>Given a user with the required role accesses the same resource, when the request is made, then the system grants access.</li>
+        </ul>
+      </td>
+      <td>EP07</td>
+    </tr>
+    <tr>
+      <td>US19</td>
+      <td>View Card Details</td>
+      <td>Allows any user to view the full details of a specific card, including brand, model, rarity, and current status.</td>
+      <td>As a user, I want to view the detailed information of a card, so that I can decide whether to buy or keep it.</td>
+      <td>
+        <ul>
+          <li>Given a card exists in the catalog, when a user selects it, then the system displays its brand, model, rarity, status, current owner (if applicable), and price (if listed).</li>
+          <li>Given a card is inactive, when a regular user attempts to view it, then the system indicates that the card is not currently available.</li>
+        </ul>
+      </td>
+      <td>EP02</td>
+    </tr>
+    <tr>
+      <td>US20</td>
+      <td>Reactivate a Deactivated Card</td>
+      <td>Allows administrators to bring a previously deactivated card back into circulation.</td>
+      <td>As an administrator, I want to reactivate a deactivated card, so that it becomes available again in the marketplace and pack openings.</td>
+      <td>
+        <ul>
+          <li>Given a card has an <strong>inactive</strong> status, when an administrator changes its status to <strong>active</strong>, then the card becomes available again for packs and marketplace listings.</li>
+          <li>Given a card is already active, when an administrator attempts to reactivate it, then the system indicates no change was needed.</li>
+        </ul>
+      </td>
+      <td>EP02</td>
     </tr>
   </tbody>
 </table>
