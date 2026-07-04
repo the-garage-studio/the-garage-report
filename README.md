@@ -616,5 +616,177 @@ Additionally, the development of this project has the personal and professional 
       </td>
       <td>EP02</td>
     </tr>
+    <tr>
+      <td>US21</td>
+      <td>Password Recovery</td>
+      <td>Allows users who forgot their password to reset it securely via email.</td>
+      <td>As a registered user, I want to recover my account through a password reset process, so that I can regain access if I forget my password.</td>
+      <td>
+        <ul>
+          <li>Given a user requests a password reset with a registered email, when the request is submitted, then the system sends a reset link/token to that email.</li>
+          <li>Given a user follows a valid, non-expired reset link, when they submit a new password meeting security requirements, then the system updates the password and invalidates the reset token.</li>
+          <li>Given a reset token has expired or was already used, when the user attempts to use it again, then the system rejects the request.</li>
+        </ul>
+      </td>
+      <td>EP01</td>
+    </tr>
+    <tr>
+      <td>US22</td>
+      <td>Log Out</td>
+      <td>Enables users to securely end their authenticated session.</td>
+      <td>As a logged-in user, I want to log out of my account, so that my session is closed and my account stays secure on shared devices.</td>
+      <td>
+        <ul>
+          <li>Given a logged-in user selects <strong>Log out</strong>, when the action is confirmed, then the system invalidates the current session/token and redirects to the login page.</li>
+          <li>Given a session has already been closed, when a request is made using the old token, then the system rejects it as unauthorized.</li>
+        </ul>
+      </td>
+      <td>EP01</td>
+    </tr>
+    <tr>
+      <td>US23</td>
+      <td>Account Deactivation</td>
+      <td>Allows a user to deactivate their own account without permanently deleting their data.</td>
+      <td>As a registered user, I want to deactivate my account, so that I can stop using the platform while keeping my data preserved.</td>
+      <td>
+        <ul>
+          <li>Given a logged-in user requests account deactivation, when they confirm the action, then the system marks the account as <strong>inactive</strong> and logs the user out.</li>
+          <li>Given an inactive account attempts to log in, when the credentials are correct, then the system denies access and informs the user their account is deactivated.</li>
+        </ul>
+      </td>
+      <td>EP01</td>
+    </tr>
+    <tr>
+      <td>US24</td>
+      <td>Prevent Duplicate Card Purchase</td>
+      <td>Ensures that a card cannot be purchased by two users simultaneously.</td>
+      <td>As a system, I want to prevent concurrent purchases of the same card, so that only one user ends up owning it and data integrity is preserved.</td>
+      <td>
+        <ul>
+          <li>Given two users attempt to purchase the same listed card at nearly the same time, when both requests are processed, then only the first completed transaction succeeds and the second is rejected with a clear message.</li>
+          <li>Given a purchase attempt fails due to concurrency, when the user retries, then the system reflects the card's current real status (sold or still listed).</li>
+        </ul>
+      </td>
+      <td>EP04</td>
+    </tr>
+    <tr>
+      <td>US25</td>
+      <td>Sort Marketplace Results</td>
+      <td>Allows users to order marketplace listings by different criteria.</td>
+      <td>As a user, I want to sort marketplace results by price, rarity, or listing date, so that I can find relevant cards more easily.</td>
+      <td>
+        <ul>
+          <li>Given a user is viewing marketplace results, when they select a sorting criterion (e.g., price ascending, rarity, newest first), then the system reorders the results accordingly.</li>
+          <li>Given no sorting criterion is selected, when the marketplace loads, then results are displayed in the default order (e.g., newest listings first).</li>
+        </ul>
+      </td>
+      <td>EP04</td>
+    </tr>
+    <tr>
+      <td>US26</td>
+      <td>Bulk Card Creation</td>
+      <td>Allows administrators to create multiple cards at once via a batch upload.</td>
+      <td>As an administrator, I want to create multiple cards in bulk (e.g., via file upload), so that I can populate the catalog more efficiently.</td>
+      <td>
+        <ul>
+          <li>Given an administrator uploads a valid batch file with card data, when the file is processed, then the system creates all valid cards and reports the number successfully added.</li>
+          <li>Given the batch file contains invalid or incomplete entries, when the file is processed, then the system rejects only the invalid entries and reports which ones failed and why.</li>
+        </ul>
+      </td>
+      <td>EP02</td>
+    </tr>
+    <tr>
+      <td>US27</td>
+      <td>View Card Catalog Statistics</td>
+      <td>Provides administrators with an overview of the card catalog's composition and activity.</td>
+      <td>As an administrator, I want to view statistics about the card catalog (total cards, active/inactive, rarity distribution), so that I can make informed decisions about circulation.</td>
+      <td>
+        <ul>
+          <li>Given cards exist in the catalog, when an administrator opens the statistics dashboard, then the system displays counts by status and rarity, and identifies cards never purchased.</li>
+          <li>Given the catalog has no cards, when the dashboard loads, then the system displays an empty/zeroed state.</li>
+        </ul>
+      </td>
+      <td>EP02</td>
+    </tr>
+    <tr>
+      <td>US28</td>
+      <td>Notify User on Pack Availability</td>
+      <td>Informs users when their free pack cooldown has ended and a new pack is ready.</td>
+      <td>As a regular user, I want to be notified when my free pack is ready to open, so that I don't forget to claim it.</td>
+      <td>
+        <ul>
+          <li>Given a user's pack cooldown has just expired, when they next access the platform, then the system displays a notification indicating a free pack is available.</li>
+          <li>Given a user already claimed the pack for the current cycle, when they access the platform, then no availability notification is shown.</li>
+        </ul>
+      </td>
+      <td>EP03</td>
+    </tr>
+    <tr>
+      <td>US29</td>
+      <td>Configure Pack Cooldown Interval</td>
+      <td>Allows administrators to define or adjust the cooldown period between free pack openings.</td>
+      <td>As an administrator, I want to configure the cooldown interval for free packs, so that I can control how frequently users obtain new cards.</td>
+      <td>
+        <ul>
+          <li>Given an administrator sets a new cooldown interval, when the change is saved, then the system applies the new interval to future pack openings.</li>
+          <li>Given an invalid interval is submitted (e.g., negative or zero), when the administrator attempts to save it, then the system rejects the change and shows a validation error.</li>
+        </ul>
+      </td>
+      <td>EP03</td>
+    </tr>
+    <tr>
+      <td>US30</td>
+      <td>Sort Personal Collection</td>
+      <td>Allows users to order their own card collection by different attributes.</td>
+      <td>As a user, I want to sort my personal collection by brand, purchase price, or current value, so that I can review my cards more conveniently.</td>
+      <td>
+        <ul>
+          <li>Given a user is viewing their collection, when they select a sorting attribute, then the system reorders the collection accordingly.</li>
+          <li>Given no sorting attribute is selected, when the collection loads, then cards are displayed in the default order (e.g., most recently acquired first).</li>
+        </ul>
+      </td>
+      <td>EP05</td>
+    </tr>
+    <tr>
+      <td>US31</td>
+      <td>Collection Storage Limit Warning</td>
+      <td>Warns users when they are approaching their collection's storage capacity.</td>
+      <td>As a user, I want to be warned when my collection is close to its storage limit, so that I can decide whether to sell cards or subscribe to a plan.</td>
+      <td>
+        <ul>
+          <li>Given a user's collection reaches a defined threshold (e.g., 90% of capacity), when they access their collection, then the system displays a warning indicating the remaining available slots.</li>
+          <li>Given a user's collection is below the threshold, when they access their collection, then no warning is shown.</li>
+        </ul>
+      </td>
+      <td>EP05</td>
+    </tr>
+    <tr>
+      <td>US32</td>
+      <td>Compare Available Subscription Plans</td>
+      <td>Allows users to view and compare the different subscription plans before choosing one.</td>
+      <td>As a user, I want to compare the available subscription plans and their benefits, so that I can choose the one that best fits my needs.</td>
+      <td>
+        <ul>
+          <li>Given subscription plans exist in the system, when a user opens the plans comparison view, then the system displays each plan's price, storage limit, and other benefits side by side.</li>
+          <li>Given a user already has an active plan, when they view the comparison, then their current plan is clearly highlighted.</li>
+        </ul>
+      </td>
+      <td>EP06</td>
+    </tr>
+    <tr>
+      <td>US33</td>
+      <td>Audit Role Changes</td>
+      <td>Keeps a record of role assignment changes for accountability and traceability.</td>
+      <td>As an administrator, I want role changes to be logged, so that I can audit who changed a user's role and when.</td>
+      <td>
+        <ul>
+          <li>Given an administrator changes a user's role, when the change is saved, then the system records the previous role, new role, responsible administrator, and timestamp.</li>
+          <li>Given an audit log entry exists, when an administrator with sufficient permissions views the audit history, then the system displays the full list of role change records.</li>
+        </ul>
+      </td>
+      <td>EP07</td>
+    </tr>
+  </tbody>
+</table>
   </tbody>
 </table>
