@@ -28,6 +28,7 @@
   - [**Epics**](#epics)
   - [**User Stories**](#user-stories)
   - [**Domain Requirements**](#domain-requirements)
+    - [Block 1: Users \& Authentication](#block-1-users--authentication)
 
 
 ---
@@ -839,3 +840,54 @@ Additionally, the development of this project has the personal and professional 
     </tr>
   </tbody>
 </table>
+
+### Block 1: Users & Authentication
+
+**RN-01 | Email Uniqueness**
+Description: Every registered email must be unique in the system. No two accounts may share the same email address.
+
+Applies to: EPIC-01, US01
+
+Example / Exception: If a user attempts to register with an existing email, the system must reject the request with a clear error message.
+
+**RN-02 | Minimum Password Requirements**
+Description: Every password must meet minimum security requirements (minimum length, combination of uppercase, lowercase, numbers, and/or special characters, to be defined precisely during technical design).
+
+Applies to: EPIC-01, US01
+
+Example / Exception: None.
+
+**RN-03 | JWT-Based Authentication**
+Description: Access to protected system resources requires a valid, non-expired JWT token, issued after a successful login.
+
+Applies to: EPIC-01, US02
+
+Example / Exception: An expired or invalid token must be automatically rejected, requiring the user to authenticate again.
+
+**RN-04 | Token Expiration**
+Description: Every JWT token has a limited lifetime (TTL) defined by the system. Once expired, it is no longer valid for authenticating requests.
+
+Applies to: EPIC-01, US02
+
+Example / Exception: A refresh token mechanism could be evaluated if the project requires it, though this may be considered out of scope per the README.
+
+**RN-05 | Session Invalidation on Logout**
+Description: Upon logging out, the user's current JWT token must be considered invalid for any subsequent request, even if it has not yet expired by time.
+
+Applies to: EPIC-01, US22
+
+Example / Exception: None.
+
+**RN-06 | Valid System Roles**
+Description: Every user must have exactly one valid role assigned within the system: Administrator, Developer, or Regular User. Users without an assigned role cannot exist.
+
+Applies to: EPIC-01, EPIC-07, US01, US17
+
+Example / Exception: By default, any user who self-registers is assigned the Regular User role; Administrator and Developer roles can only be assigned manually.
+
+**RN-07 | Deactivated Account Status**
+Description: An account marked as "inactive" cannot log in or perform any action in the system, although its historical data remains stored.
+
+Applies to: EPIC-01, US23
+
+Example / Exception: A user with a deactivated account who attempts to authenticate with correct credentials must receive a message indicating their account is deactivated, not a generic invalid-credentials error.
