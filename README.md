@@ -10,19 +10,24 @@
 
 ## Table of Contents
 
-1. [Project Overview](#project-overview)
-   - [1.1. Introduction](#introduction)
-   - [1.2. Vision](#vision)
-   - [1.3. Project Scope](#project-scope)
-     - [1.3.1. Frontend Scope](#1-frontend-scope)
-     - [1.3.2. Backend Scope](#2-backend-scope)
-     - [1.3.3. Deployment & Infrastructure Scope](#3-deployment--infrastructure-scope)
-     - [1.3.4. Product / Application Scope](#4-product--application-scope)
-
-2. [Requirements Specification](#requirements-specification)
-   - [2.1. Epics](#epics)
-   - [2.2. User Stories](#user-stories)
-   - [2.3. Technical Stories](#technical-stories)
+- [The Garage Report](#the-garage-report)
+  - [Table of Contents](#table-of-contents)
+  - [**Project Overview**](#project-overview)
+  - [**Introduction**](#introduction)
+  - [**Vision**](#vision)
+  - [**Project Scope**](#project-scope)
+    - [1. Frontend Scope](#1-frontend-scope)
+      - [Out of Scope](#out-of-scope)
+    - [2. Backend Scope](#2-backend-scope)
+      - [Out of Scope](#out-of-scope-1)
+    - [3. Deployment \& Infrastructure Scope](#3-deployment--infrastructure-scope)
+      - [Out of Scope](#out-of-scope-2)
+    - [4. Product / Application Scope](#4-product--application-scope)
+      - [Out of Scope (Product)](#out-of-scope-product)
+  - [**Requirements Specification**](#requirements-specification)
+  - [**Epics**](#epics)
+  - [**User Stories**](#user-stories)
+  - [**Domain Requirements**](#domain-requirements)
 
 
 ---
@@ -788,5 +793,49 @@ Additionally, the development of this project has the personal and professional 
     </tr>
   </tbody>
 </table>
+  </tbody>
+</table>
+
+
+<br><br><br>
+
+## **Domain Requirements**
+
+<table>
+  <thead>
+    <tr>
+      <th>Block</th>
+      <th>Covers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Users & Authentication</td>
+      <td>Password requirements, email uniqueness, JWT token expiration, valid roles</td>
+    </tr>
+    <tr>
+      <td>Card Catalog</td>
+      <td>Who can create cards, rarity immutability, status rules (active/inactive), non-depreciation of value</td>
+    </tr>
+    <tr>
+      <td>Pack Opening</td>
+      <td>Cooldown interval, randomness, exclusion of inactive cards from the pool</td>
+    </tr>
+    <tr>
+      <td>Marketplace / Transactions</td>
+      <td>Conditions to list, conditions to purchase, concurrency handling, price calculation/updates</td>
+    </tr>
+    <tr>
+      <td>Personal Collection</td>
+      <td>Default storage limit, filtering/sorting, behavior when the limit is exceeded</td>
+    </tr>
+    <tr>
+      <td>Subscriptions</td>
+      <td>Available plans, cancellation behavior (immediate vs. end of period), behavior on expiration without renewal</td>
+    </tr>
+    <tr>
+      <td>Roles & Permissions</td>
+      <td>What each role can do, permission hierarchy, who can assign roles</td>
+    </tr>
   </tbody>
 </table>
