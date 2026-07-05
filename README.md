@@ -32,6 +32,7 @@
     - [Block 2: Card Catalog](#block-2-card-catalog)
     - [Block 3: Pack Opening](#block-3-pack-opening)
     - [Block 4: Marketplace / Transactions](#block-4-marketplace--transactions)
+    - [Block 5: Personal Collection](#block-5-personal-collection)
 
 
 ---
@@ -1054,3 +1055,38 @@ Additionally, the development of this project has the personal and professional 
 **Description:** A card listed in the marketplace remains the property of its current owner until the listing is cancelled or a purchase transaction is successfully completed.  
 **Applies to:** EPIC-04, US07, US08, US12  
 **Example / Exception:** None.
+
+### Block 5: Personal Collection
+
+**RN-31 | Default Storage Limit**  
+**Description:** Every user without an active subscription has a predefined maximum number of cards that can be stored in their personal collection.  
+**Applies to:** EPIC-05, EPIC-06, US10, US14  
+**Example / Exception:** None.
+
+---
+
+**RN-32 | Storage Limit Enforcement**  
+**Description:** A user whose personal collection has reached its storage limit cannot acquire additional cards until storage space becomes available or the storage limit is increased through an active subscription.  
+**Applies to:** EPIC-05, EPIC-06, US06, US08, US14  
+**Example / Exception:** None.
+
+---
+
+**RN-33 | Storage Capacity Warning**  
+**Description:** The system must notify users when their personal collection reaches a predefined percentage of its maximum storage capacity.  
+**Applies to:** EPIC-05, US31  
+**Example / Exception:** The default notification threshold may be configured by an administrator (e.g., 90% of the available capacity).
+
+---
+
+**RN-34 | Subscription Storage Extension**  
+**Description:** Activating a subscription plan increases the maximum number of cards that a user can store in their personal collection according to the limits defined by the selected plan.  
+**Applies to:** EPIC-06, US14  
+**Example / Exception:** If a subscription expires, the user's storage limit is recalculated according to the default limit or the limits defined by another active subscription.
+
+---
+
+**RN-35 | Card Acquisition Restriction**  
+**Description:** A card cannot be assigned to a user whose personal collection has reached its maximum storage capacity. This restriction applies regardless of how the card is acquired (e.g., marketplace purchase or card pack opening).  
+**Applies to:** EPIC-03, EPIC-05, EPIC-06, US06, US08, US14  
+**Example / Exception:** The acquisition request must be rejected until sufficient storage space becomes available or the user's storage capacity is increased.
