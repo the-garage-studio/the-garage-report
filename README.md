@@ -1033,3 +1033,24 @@ Additionally, the development of this project has the personal and professional 
 **Description:** The owner of an active marketplace listing may cancel it at any time before the card is purchased. Once cancelled, the card returns to the owner's collection and is no longer visible in the marketplace.  
 **Applies to:** EPIC-04, US12  
 **Example / Exception:** A completed sale cannot be cancelled.
+
+---
+
+**RN-28 | Marketplace Eligibility**  
+**Description:** Only active cards that are currently owned by a user may be listed in the marketplace. Cards marked as **Inactive** cannot be published for sale.  
+**Applies to:** EPIC-04, US07  
+**Example / Exception:** None.
+
+---
+
+**RN-29 | Self-Purchase Restriction**  
+**Description:** A user cannot purchase a card that they currently own.  
+**Applies to:** EPIC-04, US08  
+**Example / Exception:** None.
+
+---
+
+**RN-30 | Card Ownership During Listing**  
+**Description:** A card listed in the marketplace remains the property of its current owner until the listing is cancelled or a purchase transaction is successfully completed.  
+**Applies to:** EPIC-04, US07, US08, US12  
+**Example / Exception:** None.
