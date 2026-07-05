@@ -33,6 +33,7 @@
     - [Block 3: Pack Opening](#block-3-pack-opening)
     - [Block 4: Marketplace / Transactions](#block-4-marketplace--transactions)
     - [Block 5: Personal Collection](#block-5-personal-collection)
+    - [Block 6: Subscriptions](#block-6-subscriptions)
 
 
 ---
@@ -1090,3 +1091,38 @@ Additionally, the development of this project has the personal and professional 
 **Description:** A card cannot be assigned to a user whose personal collection has reached its maximum storage capacity. This restriction applies regardless of how the card is acquired (e.g., marketplace purchase or card pack opening).  
 **Applies to:** EPIC-03, EPIC-05, EPIC-06, US06, US08, US14  
 **Example / Exception:** The acquisition request must be rejected until sufficient storage space becomes available or the user's storage capacity is increased.
+
+### Block 6: Subscriptions
+
+**RN-36 | Subscription Storage Extension**  
+**Description:** An active subscription increases the maximum number of cards that a user can store in their personal collection according to the limits defined by the selected subscription plan.  
+**Applies to:** EPIC-06, US14  
+**Example / Exception:** None.
+
+---
+
+**RN-37 | Single Active Subscription per User**  
+**Description:** A user may have only one active subscription at any given time.  
+**Applies to:** EPIC-06, US14  
+**Example / Exception:** None.
+
+---
+
+**RN-38 | Subscription Validity Period**  
+**Description:** Every subscription must have a creation date and an expiration date. A subscription is considered active only during its validity period.  
+**Applies to:** EPIC-06, US14  
+**Example / Exception:** None.
+
+---
+
+**RN-39 | Subscription Cancellation**  
+**Description:** A user may cancel their active subscription at any time. Cancelling a subscription does not modify its expiration date, and the subscription benefits remain available until the subscription expires.  
+**Applies to:** EPIC-06, US16  
+**Example / Exception:** None.
+
+---
+
+**RN-40 | Storage Limit Reversion**  
+**Description:** If, upon subscription expiration, a user's stored card count exceeds the allowed storage limit, no cards are removed from the collection. However, the user cannot acquire additional cards until the number of stored cards is within the allowed limit or a new subscription is activated.  
+**Applies to:** EPIC-06, US16  
+**Example / Exception:** None.
