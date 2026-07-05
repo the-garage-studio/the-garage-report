@@ -30,6 +30,7 @@
   - [**Domain Requirements**](#domain-requirements)
     - [Block 1: User Management \& Authentication](#block-1-user-management--authentication)
     - [Block 2: Card Catalog](#block-2-card-catalog)
+    - [Block 3: Pack Opening](#block-3-pack-opening)
 
 
 ---
@@ -954,3 +955,31 @@ Additionally, the development of this project has the personal and professional 
 **Description:** Each card can only be awarded once through the card pack system. Once a card has been assigned to a user, it cannot be obtained again through another pack. Ownership may only change through a valid marketplace transaction.  
 **Applies to:** EPIC-03, US06, US08  
 **Example / Exception:** None.
+
+### Block 3: Pack Opening
+
+**RN-17 | Pack Cooldown Interval**  
+**Description:** A user may open only one free card pack during each configured cooldown interval. The cooldown interval is defined and managed by an administrator.  
+**Applies to:** EPIC-03, US06, US29  
+**Example / Exception:** None.
+
+---
+
+**RN-18 | Random Card Assignment**  
+**Description:** Each free card pack must award exactly one randomly selected card from the pool of eligible active cards.  
+**Applies to:** EPIC-03, US06  
+**Example / Exception:** None.
+
+---
+
+**RN-19 | Exclusion of Inactive Cards from Pack Distribution**  
+**Description:** Cards with an **Inactive** status must never be included in the pool of cards available for pack distribution.  
+**Applies to:** EPIC-03, US06  
+**Example / Exception:** None.
+
+---
+
+**RN-20 | Pack Cooldown Enforcement**  
+**Description:** A user cannot open another free card pack until the configured cooldown interval has elapsed.  
+**Applies to:** EPIC-03, US06, US13  
+**Example / Exception:** If a user attempts to open a pack before the cooldown expires, the request must be rejected and the remaining waiting time must be displayed.
