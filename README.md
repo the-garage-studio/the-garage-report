@@ -31,6 +31,7 @@
     - [Block 1: User Management \& Authentication](#block-1-user-management--authentication)
     - [Block 2: Card Catalog](#block-2-card-catalog)
     - [Block 3: Pack Opening](#block-3-pack-opening)
+    - [Block 4: Marketplace / Transactions](#block-4-marketplace--transactions)
 
 
 ---
@@ -983,3 +984,52 @@ Additionally, the development of this project has the personal and professional 
 **Description:** A user cannot open another free card pack until the configured cooldown interval has elapsed.  
 **Applies to:** EPIC-03, US06, US13  
 **Example / Exception:** If a user attempts to open a pack before the cooldown expires, the request must be rejected and the remaining waiting time must be displayed.
+
+### Block 4: Marketplace / Transactions
+
+**RN-21 | Ownership Required to List a Card**  
+**Description:** Only the current owner of a card may publish it for sale in the marketplace.  
+**Applies to:** EPIC-04, US07  
+**Example / Exception:** None.
+
+---
+
+**RN-22 | Single Active Listing per Card**  
+**Description:** A card may have only one active marketplace listing at any given time.  
+**Applies to:** EPIC-04, US07  
+**Example / Exception:** None.
+
+---
+
+**RN-23 | Free Price Setting**  
+**Description:** The owner of a card is free to define its selling price when publishing it in the marketplace, provided it complies with the pricing rules established by the system.  
+**Applies to:** EPIC-04, US07  
+**Example / Exception:** The selling price must be greater than zero.
+
+---
+
+**RN-24 | Ownership Transfer After Purchase**  
+**Description:** Once a purchase has been successfully completed, ownership of the card is transferred immediately and exclusively to the buyer. The card is automatically removed from the marketplace.  
+**Applies to:** EPIC-04, US08  
+**Example / Exception:** None.
+
+---
+
+**RN-25 | Concurrent Purchase Resolution**  
+**Description:** A card can only be sold once per marketplace listing. If multiple users attempt to purchase the same card simultaneously, only one purchase may be completed successfully.  
+**Applies to:** EPIC-04, US24  
+**Example / Exception:** All unsuccessful purchase attempts must be rejected.
+
+---
+
+**RN-26 | Transaction History**  
+**Description:** Every completed marketplace transaction must be permanently recorded, including the buyer, seller, card, sale price, and transaction date.  
+**Applies to:** EPIC-04, US08, US11  
+**Example / Exception:** None.
+
+---
+
+**RN-27 | Listing Cancellation**  
+**Description:** The owner of an active marketplace listing may cancel it at any time before the card is purchased. Once cancelled, the card returns to the owner's collection and is no longer visible in the marketplace.  
+**Applies to:** EPIC-04, US12  
+**Example / Exception:** A completed sale cannot be cancelled.
