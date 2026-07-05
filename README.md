@@ -34,6 +34,7 @@
     - [Block 4: Marketplace / Transactions](#block-4-marketplace--transactions)
     - [Block 5: Personal Collection](#block-5-personal-collection)
     - [Block 6: Subscriptions](#block-6-subscriptions)
+    - [Block 7: Roles \& Permissions](#block-7-roles--permissions)
 
 
 ---
@@ -1125,4 +1126,32 @@ Additionally, the development of this project has the personal and professional 
 **RN-40 | Storage Limit Reversion**  
 **Description:** If, upon subscription expiration, a user's stored card count exceeds the allowed storage limit, no cards are removed from the collection. However, the user cannot acquire additional cards until the number of stored cards is within the allowed limit or a new subscription is activated.  
 **Applies to:** EPIC-06, US16  
+**Example / Exception:** None.
+
+### Block 7: Roles & Permissions
+
+**RN-41 | Role-Based Access Control**  
+**Description:** Access to protected system resources and actions must be restricted according to the authenticated user's assigned role. Each role may only perform the actions explicitly authorized for it.  
+**Applies to:** EPIC-07, US18  
+**Example / Exception:** None.
+
+---
+
+**RN-42 | Valid System Roles**  
+**Description:** Every user must have exactly one valid role assigned. The only valid roles in the system are **Administrator**, **Developer**, and **Regular User**.  
+**Applies to:** EPIC-07, US17, US18  
+**Example / Exception:** Users who register through the application are assigned the **Regular User** role by default. Administrator and Developer roles may only be assigned manually by an Administrator.
+
+---
+
+**RN-43 | Exclusive Role Assignment Permission**  
+**Description:** Only users with the **Administrator** role may assign or modify another user's role. Users cannot modify their own role.  
+**Applies to:** EPIC-07, US17  
+**Example / Exception:** None.
+
+---
+
+**RN-44 | Role Change Audit Trail**  
+**Description:** Every role change must be recorded in an audit log, including the affected user, the previous role, the new role, the administrator who performed the change, and the timestamp of the operation.  
+**Applies to:** EPIC-07, US33  
 **Example / Exception:** None.
