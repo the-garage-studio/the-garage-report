@@ -28,7 +28,8 @@
   - [**Epics**](#epics)
   - [**User Stories**](#user-stories)
   - [**Domain Requirements**](#domain-requirements)
-    - [Block 1: Users \& Authentication](#block-1-users--authentication)
+    - [Block 1: User Management \& Authentication](#block-1-user-management--authentication)
+    - [Block 2: Card Catalog](#block-2-card-catalog)
 
 
 ---
@@ -841,53 +842,115 @@ Additionally, the development of this project has the personal and professional 
   </tbody>
 </table>
 
-### Block 1: Users & Authentication
+### Block 1: User Management & Authentication
 
-**RN-01 | Email Uniqueness**
-Description: Every registered email must be unique in the system. No two accounts may share the same email address.
+**RN-01 | Email Uniqueness**  
+**Description:** Every registered email address must be unique within the system. No two user accounts may share the same email address.  
+**Applies to:** EPIC-01, US01  
+**Example / Exception:** If a user attempts to register using an email address that already exists, the system must reject the request and display a clear error message.
 
-Applies to: EPIC-01, US01
+---
 
-Example / Exception: If a user attempts to register with an existing email, the system must reject the request with a clear error message.
+**RN-02 | Minimum Password Requirements**  
+**Description:** Every password must satisfy the minimum security requirements defined by the system, including minimum length and character composition (uppercase letters, lowercase letters, numbers, and/or special characters). The exact requirements will be specified during the technical design phase.  
+**Applies to:** EPIC-01, US01  
+**Example / Exception:** None.
 
-**RN-02 | Minimum Password Requirements**
-Description: Every password must meet minimum security requirements (minimum length, combination of uppercase, lowercase, numbers, and/or special characters, to be defined precisely during technical design).
+---
 
-Applies to: EPIC-01, US01
+**RN-03 | JWT-Based Authentication**  
+**Description:** Access to protected system resources requires a valid, non-expired JWT issued after a successful authentication.  
+**Applies to:** EPIC-01, US02  
+**Example / Exception:** Requests containing an invalid or expired JWT must be rejected, requiring the user to authenticate again.
 
-Example / Exception: None.
+---
 
-**RN-03 | JWT-Based Authentication**
-Description: Access to protected system resources requires a valid, non-expired JWT token, issued after a successful login.
+**RN-04 | Token Expiration**  
+**Description:** Every JWT has a predefined lifetime (TTL). Once the token expires, it can no longer be used to authenticate requests.  
+**Applies to:** EPIC-01, US02  
+**Example / Exception:** A refresh token mechanism may be evaluated in the future if required, but it is currently outside the project's scope.
 
-Applies to: EPIC-01, US02
+---
 
-Example / Exception: An expired or invalid token must be automatically rejected, requiring the user to authenticate again.
+**RN-05 | Session Invalidation on Logout**  
+**Description:** After a user logs out, the current authenticated session must no longer be valid, preventing further access using the same authentication token.  
+**Applies to:** EPIC-01, US22  
+**Example / Exception:** None.
 
-**RN-04 | Token Expiration**
-Description: Every JWT token has a limited lifetime (TTL) defined by the system. Once expired, it is no longer valid for authenticating requests.
+---
 
-Applies to: EPIC-01, US02
+**RN-06 | Valid System Roles**  
+**Description:** Every user must have exactly one valid role assigned within the system: **Administrator**, **Developer**, or **Regular User**. Users cannot exist without an assigned role.  
+**Applies to:** EPIC-01, EPIC-07, US01, US17  
+**Example / Exception:** Users who register through the application are assigned the **Regular User** role by default. **Administrator** and **Developer** roles may only be assigned manually by an authorized administrator.
 
-Example / Exception: A refresh token mechanism could be evaluated if the project requires it, though this may be considered out of scope per the README.
+---
 
-**RN-05 | Session Invalidation on Logout**
-Description: Upon logging out, the user's current JWT token must be considered invalid for any subsequent request, even if it has not yet expired by time.
+**RN-07 | Deactivated Account Status**  
+**Description:** A user account marked as **Inactive** cannot authenticate or perform any action within the system. The account and its historical data must remain stored for auditing and traceability purposes.  
+**Applies to:** EPIC-01, US23  
+**Example / Exception:** If a user with an inactive account attempts to log in using valid credentials, the authentication request must be rejected and an appropriate message must be displayed.
 
-Applies to: EPIC-01, US22
 
-Example / Exception: None.
+### Block 2: Card Catalog
 
-**RN-06 | Valid System Roles**
-Description: Every user must have exactly one valid role assigned within the system: Administrator, Developer, or Regular User. Users without an assigned role cannot exist.
+**RN-08 | Exclusive Card Creation by Administrators**  
+**Description:** Only users with the **Administrator** role are allowed to create new cards. Regular users cannot create cards under any circumstances.  
+**Applies to:** EPIC-02, US04  
+**Example / Exception:** None.
 
-Applies to: EPIC-01, EPIC-07, US01, US17
+---
 
-Example / Exception: By default, any user who self-registers is assigned the Regular User role; Administrator and Developer roles can only be assigned manually.
+**RN-09 | Rarity Immutability**  
+**Description:** Once a card's rarity is assigned during its creation, it cannot be modified afterward, even by an administrator.  
+**Applies to:** EPIC-02, US04  
+**Example / Exception:** None.
 
-**RN-07 | Deactivated Account Status**
-Description: An account marked as "inactive" cannot log in or perform any action in the system, although its historical data remains stored.
+---
 
-Applies to: EPIC-01, US23
+**RN-10 | Card Type Immutability**  
+**Description:** A card's type or category is part of its identity and cannot be modified after the card has been created.  
+**Applies to:** EPIC-02, US04  
+**Example / Exception:** None.
 
-Example / Exception: A user with a deactivated account who attempts to authenticate with correct credentials must receive a message indicating their account is deactivated, not a generic invalid-credentials error.
+---
+
+**RN-11 | Permanent Base Value**  
+**Description:** If a card has a base value defined by the system, that value remains constant throughout the card's lifetime and is not affected by marketplace activity or the passage of time.  
+**Applies to:** EPIC-02, US04  
+**Example / Exception:** This rule does not restrict the selling price defined by the card owner in the marketplace.
+
+---
+
+**RN-12 | Unique Card Ownership**  
+**Description:** Every card can belong to only one user at any given time. Card ownership can only change through a valid marketplace transaction.  
+**Applies to:** EPIC-04, US08  
+**Example / Exception:** None.
+
+---
+
+**RN-13 | Soft Delete for Cards**  
+**Description:** Cards are never permanently deleted from the database. When an administrator decides to remove a card from circulation, its status must be changed to **Inactive** instead.  
+**Applies to:** EPIC-02, US05  
+**Example / Exception:** None.
+
+---
+
+**RN-14 | Effects of Card Deactivation**  
+**Description:** An **Inactive** card cannot be obtained through card packs, listed in the marketplace, or purchased by other users. However, it remains visible in its owner's collection and in historical records such as completed transactions.  
+**Applies to:** EPIC-02, US05  
+**Example / Exception:** None.
+
+---
+
+**RN-15 | Card Reactivation**  
+**Description:** An administrator may change a card's status from **Inactive** to **Active**, making it available again for card packs and marketplace listings.  
+**Applies to:** EPIC-02  
+**Example / Exception:** None.
+
+---
+
+**RN-16 | Unique Card Distribution**  
+**Description:** Each card can only be awarded once through the card pack system. Once a card has been assigned to a user, it cannot be obtained again through another pack. Ownership may only change through a valid marketplace transaction.  
+**Applies to:** EPIC-03, US06, US08  
+**Example / Exception:** None.
