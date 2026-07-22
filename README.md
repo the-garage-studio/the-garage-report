@@ -4,7 +4,7 @@
 
 **Status:** In development
 
-**Last updated:** 2 July 2026
+**Last updated:** 22 July 2026
 
 ---
 
@@ -35,6 +35,11 @@
     - [Block 5: Personal Collection](#block-5-personal-collection)
     - [Block 6: Subscriptions](#block-6-subscriptions)
     - [Block 7: Roles \& Permissions](#block-7-roles--permissions)
+  - [**C4 Diagrams**](#c4-diagrams)
+    - [**Context Diagram**](#context-diagram)
+    - [**Container Diagram**](#container-diagram)
+    - [**Component Diagram**](#component-diagram)
+    - [**Class Diagram**](#class-diagram)
 
 
 ---
@@ -1155,3 +1160,87 @@ Additionally, the development of this project has the personal and professional 
 **Description:** Every role change must be recorded in an audit log, including the affected user, the previous role, the new role, the administrator who performed the change, and the timestamp of the operation.  
 **Applies to:** EPIC-07, US33  
 **Example / Exception:** None.
+
+## **C4 Diagrams**
+
+The C4 Model is a lightweight approach for visualizing and documenting software architecture through different levels of abstraction. It helps development teams communicate the structure of a system clearly, from its overall context to its internal components, making complex architectures easier to understand. By providing a consistent and scalable view of the system, C4 diagrams improve collaboration, support design decisions, and simplify maintenance throughout the project lifecycle.
+
+### **Context Diagram**
+
+![C4 Context Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ContextDiagram/ContextDiagram.svg)
+
+The System Context Diagram provides a high-level overview of The Garage and its interactions with the external actors and systems that participate in its operation. It identifies the three primary user roles—Visitor, Collector, and Administrator—and illustrates how each one interacts with the platform according to their responsibilities. Additionally, the diagram highlights the integration with external services, including Stripe for secure subscription payment processing and an Email Service for account verification, password recovery, and platform notifications. This view establishes the system boundary and defines the external dependencies that support the core functionality of The Garage.
+
+### **Container Diagram**
+
+![C4 Container Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ContainerDiagram/ContainerDiagram.svg)
+
+The Container Diagram provides a detailed view of the internal structure of The Garage by identifying its main software containers and the interactions between them. The system is composed of a Landing Page, which serves as the public entry point for visitors, a Web Application, which provides the user interface for collectors and administrators, a REST API, responsible for implementing the application's business logic and coordinating communication with external services and a MySQL Database, which persists all application data. The diagram also illustrates the integration with external systems, including Stripe for subscription payment processing and an Email Service for sending verification messages, password recovery emails, and platform notifications. This view emphasizes the responsibilities of each container and the communication paths that enable the platform's core functionality.
+
+### **Component Diagram**
+
+**Identity & Access**
+
+![C4 Identity & Access Component Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ComponentDiagrams/IdentityAccess-ComponentDiagram.svg)
+
+**Catalog**
+
+![C4 Catalog Component Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ComponentDiagrams/Catalog-ComponentDiagram.svg)
+
+**Collection**
+
+![C4 Collection Component Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ComponentDiagrams/Collection-ComponentDiagram.svg)
+
+**Marketplace / Trading**
+
+![C4 Marketplace / Trading Component Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ComponentDiagrams/Marketplace-ComponentDiagram.svg)
+
+**Subscription & Billing**
+
+![C4 Subscription & Billing Component Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ComponentDiagrams/Subscription-ComponentDiagram.svg)
+
+**Wallet / Virtual Currency**
+
+![C4 Wallet / Virtual Currency Component Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ComponentDiagrams/Wallet-ComponentDiagram.svg)
+
+**Notifications**
+
+![C4 Notifications Component Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ComponentDiagrams/Notifications-ComponentDiagram.svg)
+
+**Administration**
+
+![C4 Administration Component Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ComponentDiagrams/Administration-ComponentDiagram.svg)
+
+### **Class Diagram**
+
+**Identity & Access**
+
+![C4 Identity & Access Class Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ClassDiagrams/IdentityAccess-ClassDiagram.svg)
+
+**Catalog**
+
+![C4 Catalog Class Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ClassDiagrams/Catalog-ClassDiagram.svg)
+
+**Collection**
+
+![C4 Collection Class Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ClassDiagrams/Collection-ClassDiagram.svg)
+
+**Marketplace / Trading**
+
+![C4 Marketplace / Trading Class Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ClassDiagrams/Marketplace-ClassDiagram.svg)
+
+**Subscription & Billing**
+
+![C4 Subscription & Billing Class Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ClassDiagrams/Subscription-ClassDiagram.svg)
+
+**Wallet / Virtual Currency**
+
+![C4 Wallet / Virtual Currency Class Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ClassDiagrams/Wallet-ClassDiagram.svg)
+
+**Notifications**
+
+![C4 Notifications Class Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ClassDiagrams/Notifications-ClassDiagram.svg)
+
+**Administration**
+
+![C4 Administration Class Diagram](https://raw.githubusercontent.com/the-garage-studio/the-garage-c4-model-design/50f432f4a998f7b921bf489fb3a20be9822f40ea/exports/ClassDiagrams/Administration-ClassDiagram.svg)
